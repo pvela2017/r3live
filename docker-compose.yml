@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  r3live:
+    image: mefistocl/r3live:noetic
+    container_name: r3live
+    hostname: localhost
+    restart: always
+    privileged: true
+    environment:
+      - DISPLAY=:0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /home/mefisto/github/r3live/catkin_ws:/root/catkin_ws
+      - /home/mefisto/github/r3live/rosbag:/root/rosbag
+    network_mode: host
+    ports:
+      - "11345:11345"
+      - "11311:11311"
